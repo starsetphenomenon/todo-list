@@ -10,8 +10,8 @@ body {
     position: relative;
 }
 
-.version{
-    position: absolute;
+.version {
+    position: fixed;
     bottom: 30px;
     left: 30px;
     font-size: 24px;
