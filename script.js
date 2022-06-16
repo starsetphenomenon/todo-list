@@ -10,10 +10,6 @@ const storageElements = document.querySelectorAll('.changeMonitor');
 const listElements = myList.childNodes;
 
 // LOCAL STORAGE
-if (localStorage.getItem('listCount') >= 1) {
-    myList.innerHTML = localStorage.getItem(`elem`);
-}
-
 const addStorage = function () {
     localStorage.setItem(`elem`, myList.innerHTML);
     localStorage.setItem('listCount', myList.childElementCount);
@@ -25,18 +21,18 @@ const getStorage = function () {
     }
 };
 
+getStorage();
+
 Array.from(allDeleteBtn).forEach(elem => {
     elem.addEventListener('click', e => {
         e.target.parentNode.remove();
         addStorage();
-        getStorage();
     });
 });
 Array.from(myList.childNodes).forEach(elem => {
     elem.addEventListener('click', e => {
         e.target.classList.toggle('checkedItem');
         addStorage();
-        getStorage();
     });
 });
 
@@ -55,9 +51,11 @@ const createListElem = function () {
         inputText.value = '';
         elementDelete.addEventListener('click', e => {
             e.target.parentNode.remove();
+            addStorage();
         });
         listElement.addEventListener('click', e => {
             listElement.classList.toggle('checkedItem');
+            addStorage();
         });
         // LOCAL STORAGE
         localStorage.setItem(`elem`, myList.innerHTML);
@@ -72,26 +70,18 @@ const deleteAll = function () {
     });
 };
 const checkAll = function () {
-    Array.from(myList.children).forEach(el => el.classList.add('checkedItem'));
+    Array.from(myList.children).forEach(el => {
+        el.classList.add('checkedItem');
+    });
 };
 
 deleteItems.addEventListener('click', e => {
     deleteAll();
     addStorage();
-    getStorage();
-
 });
 checkItems.addEventListener('click', e => {
     checkAll();
-    Array.from(myList.childNodes).forEach(elem => {
-        elem.addEventListener('click', e => {
-            e.target.classList.toggle('checkedItem');
-            addStorage();
-            getStorage();
-        });
-    });
     addStorage();
-    getStorage();
 });
 getTextBtn.addEventListener('click', createListElem);
 inputText.addEventListener('keyup', e => {
