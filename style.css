@@ -68,7 +68,7 @@ body {
     border-radius: 8px;
     background-color: rgba(198, 198, 198, 0.8);
     background-image: linear-gradient(to bottom right, #d3d0cd, #deb089);
-
+    text-decoration: none;
 }
 
 #myText::placeholder {

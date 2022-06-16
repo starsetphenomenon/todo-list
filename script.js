@@ -88,4 +88,7 @@ inputText.addEventListener('keyup', e => {
     if (e.code === 'Enter' || e.code === 'NumpadEnter') {
         createListElem();
     }
+    if (keyboardEvent.code === 'Enter') {
+        e.target.blur();
+    }
 });
