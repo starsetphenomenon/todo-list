@@ -7,6 +7,7 @@ body {
     justify-content: center;
     align-items: center;
     color: rgb(237, 149, 55);
+    position: relative;
 }
 
 .version{
@@ -83,7 +84,7 @@ body {
     border-radius: 8px;
     background-color: rgba(198, 198, 198, 0.8);
     background-image: linear-gradient(to bottom right, #d3d0cd, #deb089);
-    text-decoration: none;
+    text-decoration: none !important;
     caret-color: rgb(0, 0, 0);
 }
 
