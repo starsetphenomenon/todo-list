@@ -25,13 +25,17 @@ getStorage();
 
 Array.from(allDeleteBtn).forEach(elem => {
     elem.addEventListener('click', e => {
-        e.target.parentNode.remove();
+        e.target.parentNode.classList.add('deleteAnim');
+        setTimeout(function () {
+            e.target.parentNode.remove();
+            addStorage();
+        }, 600);
         addStorage();
     });
 });
 Array.from(myList.childNodes).forEach(elem => {
     elem.addEventListener('click', e => {
-        e.target.classList.toggle('checkedItem');
+        elem.classList.toggle('checkedItem');
         addStorage();
     });
 });
@@ -50,7 +54,11 @@ const createListElem = function () {
         myList.prepend(listElement);
         inputText.value = '';
         elementDelete.addEventListener('click', e => {
-            e.target.parentNode.remove();
+            e.target.parentNode.classList.add('deleteAnim');
+            setTimeout(function () {
+                e.target.parentNode.remove();
+                addStorage();
+            }, 600);
             addStorage();
         });
         listElement.addEventListener('click', e => {
@@ -66,7 +74,11 @@ const createListElem = function () {
 
 const deleteAll = function () {
     Array.from(myList.children).forEach(el => {
-        el.remove();
+        el.classList.add('deleteAnim');
+        setTimeout(function () {
+            el.remove();
+            addStorage();
+        }, 600);
     });
 };
 const checkAll = function () {

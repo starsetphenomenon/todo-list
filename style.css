@@ -10,6 +10,23 @@ body {
     position: relative;
 }
 
+.deleteAnim {
+    animation: delete 0.6s linear forwards;
+}
+
+@keyframes delete {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+
+}
+
 .version {
     position: fixed;
     bottom: 30px;
@@ -52,6 +69,10 @@ body {
 .downButtons>* {
     margin: 15px 30px;
     height: 80px;
+}
+
+.downButtons {
+    user-select: none;
 }
 
 .outBtn:hover {
@@ -120,17 +141,19 @@ button {
     padding: 0;
 }
 
+
 #myList li {
     font-size: 48px;
     border-radius: 44px 0 0 44px;
     position: relative;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    padding: 10px 5px 5px 30px;
-    margin: 15px 0;
+    padding: 10px 5px 10px 30px;
+    margin: 20px 0;
     box-shadow: 2px 2px 4px rgb(0, 0, 0);
     width: 97%;
-    height: 60px;
+    min-height: 60px;
     cursor: pointer;
     transition: all 0.3s;
     -webkit-tap-highlight-color: transparent;
@@ -142,41 +165,65 @@ button {
     user-select: none;
 }
 
-#myList li:hover {
-    transform: translateY(5%);
-    box-shadow: inset 2px 2px 4px black;
+#myList span {
+    width: 72%;
+    padding-right: 5px;
+    word-wrap: break-word;
 }
 
-.deleteIcon img {
+#myList li:hover {
+    transform: translateY(-15px);
+    box-shadow: inset 2px 2px 4px rgb(0, 0, 0);
+}
+
+.deleteIcon {
     height: 40px;
     width: 40px;
 }
 
 #deleteAll {
-    background-image: linear-gradient(to bottom right, #FF512F, #DD2476);
+    background-image: linear-gradient(to bottom right, #f68952, #d63e3e);
 }
 
 #checkAll {
     background-image: linear-gradient(to bottom right, #0d9f89, #3bbf39);
 }
 
-#myList span {
-    margin-right: 15px;
-}
+
 
 #myList img {
-    height: 40px;
-    width: 40px;
+    position: relative;
+    height: 50px;
+    width: 50px;
     margin: 15px;
     margin-left: auto;
-    padding: 12px 20px;
+    padding: 12px 60px;
     cursor: pointer;
     user-select: none;
+    position: absolute;
+    right: 40px;
+}
+
+#myList li::before {
+    content: '';
+    display: block;
+    width: 16px;
+    height: 100%;
+    position: absolute;
+    right: 22%;
+    top: 0;
+    background-color: rgb(107, 152, 247);
+    box-shadow: inset 4px 0px 4px black;
+}
+
+#myList li.checkedItem::before {
+    transition: all 0.3s;
+    background-color: rgb(26, 249, 26);
 }
 
 #myList img:hover {
     transition: all 0.2s;
-    transform: scale(1.3);
+    transform: scale(1.2);
 }
 
 #myForm>* {
@@ -197,7 +244,8 @@ button {
 }
 
 
-@media (hover: none) {
+@media (hover: none),
+(max-width: 768px) {
     #myForm {
         height: 420px;
         flex-direction: column;
@@ -224,15 +272,24 @@ button {
     }
 
     #myList li {
-        height: 240px;
+        min-height: 240px;
         font-size: 96px;
         box-shadow: 4px 4px 8px rgb(0, 0, 0);
+        padding: 15px 5px 25px 30px;
+    }
+
+    #myList span {
+        margin-right: 15px;
+        padding-right: 10px;
+        width: 73%;
     }
 
     #myList img {
         height: 120px;
         width: 120px;
         padding: 50px 30px;
+        position: absolute;
+        right: 0;
     }
 
     .checkedItem {
