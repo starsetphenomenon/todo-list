@@ -172,10 +172,12 @@ button {
 }
 
 #myList li:hover {
-    transform: translateY(-15px);
+    transform: translateY(-8px);
     box-shadow: inset 2px 2px 4px rgb(0, 0, 0);
 }
-
+#myList li.checkedItem:hover {
+    transform: translateY(0);
+}
 .deleteIcon {
     height: 40px;
     width: 40px;
