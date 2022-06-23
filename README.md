@@ -1,1 +1,1 @@
-# todo-list, vanilla JS with localStorage
+#  vanilla JS, todo-list with localStorage
